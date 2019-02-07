@@ -70,15 +70,23 @@
     }).addTo(map);
 
     /* =====================
-
-    Start code
+1. Creating arrays of arrays for favorite restaurants
 
     ===================== */
+    let restaurantData= [([39.963747, -75.169682,'Spring Garden']),
+    ([39.954406, -75.176210,'Poig Dog Philly']),([39.956777, -75.195264,'Pod']),([39.954360, -75.159945,'Magiano Little Italy']),
+    ([39.948662, -75.165745,'Estia Restaurant'])]
 
     L.marker([0, 0]).addTo(map);
     L.marker([0, 0]).addTo(map);
     L.marker([0, 0]).addTo(map);
+    L.marker([0, 0]).addTo(map);
+    L.marker([0, 0]).addTo(map);
 
+    function addMarker(obj) {
+      L.marker([obj[0], obj[1]]).addTo(map).bindPopup(obj[2]);
+    }
+    restaurantData.map(addMarker);
     /* =====================
 
     End code
