@@ -60,29 +60,28 @@
     Without modifying part4-data-dirty.js, change your code to account for the
     dirty data. Note: it is okay if your new code ignores a few of the points,
     if their formatting is especially wrong. But it should accommodate most points.
-
+;
     ===================== */
-
-    var data = bikeArrayClean;
-
+var data = bikeArrayClean;
+var data= bikeArrayDirty;
     /* =====================
 
     Start code to filter data
 
     ===================== */
 
-
+    var dataFiltered=[]
+    for(i = 0; i < bikeArrayClean.length; i++) {
+            if (bikeArrayClean[i][3] > 20) {
+                dataFiltered.push(bikeArrayClean[i])
+              }
+            }
 
     /* =====================
 
     End code to filter data
 
     ===================== */
-
-    var map = L.map('map', {
-      center: [39.9522, -75.1639],
-      zoom: 14
-    });
 
     var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -91,6 +90,13 @@
       maxZoom: 20,
       ext: 'png'
     }).addTo(map);
+
+  // Add a map
+    var map = L.map('map', {
+          center: [39.9522, -75.1639],
+          ext: 'png'
+    }).addTo(map);
+
 
     /* =====================
 
@@ -105,7 +111,9 @@
     End code to add markers to map
 
     ===================== */
-
+    for(var v = 1; v < dataFiltered.length; v++) {
+           L.marker([dataFiltered[j][1],dataFiltered[j][0]]).addTo(map)
+       }
     </script>
   </body>
 </html>
